@@ -521,84 +521,8 @@ This produces an optimized production bundle inside `frontend/dist`.
 - **`GET /api/dashboard/trend?months=6&month=YYYY-MM`**
   - Returns monthly expense trajectory for the past N months.
 
----
 
-## 13. GitHub Deployment Workflow
-
-To push SpendWise to your GitHub profile:
-
-1. **Initialize Git Repository**:
-   ```powershell
-   cd "d:\EXPENSE TRACKER"
-   git init
-   ```
-2. **Review Staged Files (Ensure no `.env` credentials are added)**:
-   ```powershell
-   git status
-   ```
-3. **Commit the Code**:
-   ```powershell
-   git add .
-   git commit -m "Build SpendWise full-stack personal expense tracker"
-   ```
-4. **Create a New Repository on GitHub**:
-   - Go to [github.com/new](https://github.com/new).
-   - Repository Name: `spendwise`.
-   - Set visibility to **Public**.
-   - Do NOT initialize with a README (one is already created).
-5. **Push to GitHub**:
-   ```powershell
-   git branch -M main
-   git remote add origin https://github.com/YOUR_GITHUB_USERNAME/spendwise.git
-   git push -u origin main
-   ```
-
----
-
-## 14. Cloud Deployment Guide
-
-### Deploying the Backend on Render
-1. Go to [render.com](https://render.com) and log in.
-2. Click **New +** -> **Web Service**.
-3. Connect your GitHub repository `spendwise`.
-4. Configure service details:
-   - **Name**: `spendwise-api`
-   - **Root Directory**: `backend`
-   - **Runtime**: `Node`
-   - **Build Command**: `npm install`
-   - **Start Command**: `npm start`
-   - **Instance Type**: Free
-5. In **Environment Variables**, add:
-   - `MONGODB_URI`: `your_mongodb_atlas_connection_string`
-   - `FRONTEND_URL`: `https://your-spendwise-frontend.vercel.app`
-   - `NODE_ENV`: `production`
-6. Click **Deploy Web Service**.
-7. Copy your Render service URL (e.g., `https://spendwise-api.onrender.com`).
-8. Verify health endpoint: `https://spendwise-api.onrender.com/api/health`.
-
----
-
-### Deploying the Frontend on Vercel
-1. Go to [vercel.com](https://vercel.com) and log in.
-2. Click **Add New...** -> **Project**.
-3. Import your GitHub repository `spendwise`.
-4. Configure project settings:
-   - **Framework Preset**: `Vite`
-   - **Root Directory**: `frontend`
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-5. In **Environment Variables**, add:
-   - `VITE_API_URL`: `https://spendwise-api.onrender.com` *(your actual Render backend URL without trailing slash)*
-6. Click **Deploy**.
-7. Test the live web application:
-   - Verify summary card loading.
-   - Record an income and an expense.
-   - Test category and trend charts.
-   - Verify client route refresh (enabled via `frontend/vercel.json`).
-
----
-
-## 15. How to Customize Currency
+## 13. How to Customize Currency
 
 To switch the display currency from Indian Rupees (INR) to another currency:
 
@@ -618,7 +542,7 @@ All values in MongoDB remain stored as pure floating-point numbers, ensuring zer
 
 ---
 
-## 16. Troubleshooting & Common Problems
+## 14. Troubleshooting & Common Problems
 
 | Problem | Cause | Solution |
 | :--- | :--- | :--- |
@@ -630,7 +554,7 @@ All values in MongoDB remain stored as pure floating-point numbers, ensuring zer
 
 ---
 
-## 17. Security & Portfolio Limitations
+## 15. Security & Portfolio Limitations
 
 - **Single-User Demo**: This version does not feature login or user authentication. It is intended for demonstrations, college submissions, and personal local use.
 - **No Private Financial Credentials**: SpendWise is designed exclusively for manually entered income and expense transactions. Never input banking passwords, debit/credit card numbers, or PINs.
@@ -640,11 +564,3 @@ All values in MongoDB remain stored as pure floating-point numbers, ensuring zer
   - Granular role-based access control.
   - Automated recurring transactions and bill reminders.
   - CSV / PDF export and report generation.
-
----
-
-## 18. Links & References
-
-- **Live Demo**: `[Insert your Vercel URL here]`
-- **GitHub Repository**: `[Insert your GitHub repository URL here]`
-- **License**: ISC Open Source
